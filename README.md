@@ -16,4 +16,15 @@ Features:
 * There is also some blogs to read.
 
 
+Frameworks/libraries :
+ 
+ * React-router-dom
+ * React bootstrap
+ * React font awesome icon
+ * React to pdf 
+ * firebase
+ * express JS
+
+
+
 
