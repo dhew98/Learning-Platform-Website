@@ -103,14 +103,15 @@ const Login = () => {
                                 <p className="mt-3">Don't have an account?<Link to='/register'>Create a new account</Link></p>
                             </Form.Text>
                         </div>
-                        <Button className='w-100 fw-bold' variant="primary" size="lg" active>
-                            Login
-                        </Button>
                         <div>
                             <Form.Text className="text-danger">
                                 {error}
                             </Form.Text>
                         </div>
+                        <Button type='submit' className='w-100 fw-bold' variant="primary" size="lg" >
+                            Login
+                        </Button>
+
 
 
                     </Form>
