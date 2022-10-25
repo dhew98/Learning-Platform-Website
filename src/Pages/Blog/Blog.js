@@ -9,7 +9,7 @@ const Blog = () => {
                 <div className='blog-info'>
                     <img src="https://reactjs.org/logo-og.png" alt=""></img>
                     <h3 className='activities-name'>
-                        What is `cors`?
+                        What is cors?
                     </h3>
                     <p className='activities-details'>
                         Cross-origin resource sharing is a mechanism that allows restricted resources on a web page to be requested from another domain outside the domain from which the first resource was served. A web page may freely embed cross-origin images, stylesheets, scripts, iframes, and videos
@@ -24,7 +24,7 @@ const Blog = () => {
                 <div className='blog-info'>
                     <img src="https://reactjs.org/logo-og.png" alt=""></img>
                     <h3 className='activities-name'>
-                        Why are you using `firebase`? What other options do you have to implement authentication?
+                        Why are you using firebase? What other options do you have to implement authentication?
                     </h3>
                     <p className='activities-details'>
                         Firebase Authentication provides backend services, easy-to-use SDKs, and ready-made UI libraries to authenticate users to your app. It supports authentication using passwords, phone numbers, popular federated identity providers like Google, Facebook and Twitter, and more.
