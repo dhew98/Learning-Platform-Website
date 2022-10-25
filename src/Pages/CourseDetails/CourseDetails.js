@@ -14,7 +14,7 @@ const CourseDetails = () => {
 
     const courseDetails = useLoaderData();
     const [course] = courseDetails;
-    const { detail, star, description, img, price, quiz, time, video, project, enroll, title } = course;
+    const { id, detail, star, description, img, price, quiz, time, video, project, enroll, title } = course;
     return (
         <div>
             <Container>
@@ -31,7 +31,7 @@ const CourseDetails = () => {
                                     <p className='fw-bold'>{price}</p>
                                     <p > Rating : <span className='fw-bold'>{star}</span>  <FontAwesomeIcon className='text-warning' icon={faStar} /></p>
                                 </div>
-                                <Link to={`/login`}> <Button variant="primary">Start Course</Button></Link>
+                                <Link to={`/checkout/${id}`}> <Button variant="primary">Start Course</Button></Link>
                             </Card.Body>
                         </Card>
                     </Col>

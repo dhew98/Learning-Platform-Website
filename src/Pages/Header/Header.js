@@ -21,7 +21,7 @@ const Header = () => {
         <div>
             <Navbar collapseOnSelect expand="lg" bg="light" variant="light">
                 <Container>
-                    <Navbar.Brand > <h3><FontAwesomeIcon icon={faGraduationCap} /> Pro Learner</h3> </Navbar.Brand>
+                    <Navbar.Brand > <h3><FontAwesomeIcon icon={faGraduationCap} /> <Link to='/' >Pro Learner</Link></h3>  </Navbar.Brand>
                     <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                     <Navbar.Collapse id="responsive-navbar-nav">
                         <Nav className="me-auto">
@@ -30,8 +30,8 @@ const Header = () => {
 
                         </Nav>
                         <Nav className='mx-3 px-5 fs-5 fw-bolder d-flex align-items-center'>
-                            <Link to='/'><Nav.Link >Courses</Nav.Link></Link>
-                            <Link to='/blog'><Nav.Link>Blog </Nav.Link></Link>
+                            <Nav.Link ><Link to='/'>Courses</Link></Nav.Link>
+                            <Nav.Link><Link to='/blog'>Blog </Link></Nav.Link>
                             <>
                                 {
                                     user?.uid ?
@@ -43,7 +43,7 @@ const Header = () => {
                                         </>
                                         :
                                         <>
-                                            <Link to='/login'><Nav.Link ><Button variant="primary" className="fw-bold"  >Log In</Button> </Nav.Link></Link>
+                                            <Nav.Link ><Link to='/login'><Button variant="primary" className="fw-bold"  >Log In</Button> </Link></Nav.Link>
 
                                         </>
                                 }
