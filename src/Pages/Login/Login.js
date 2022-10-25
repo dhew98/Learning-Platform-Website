@@ -7,11 +7,25 @@ import { AuthContext } from '../../contexts/AuthProvider/AuthProvider';
 
 const Login = () => {
     const [error, setError] = useState('');
-    const { signIn, setLoading } = useContext(AuthContext);
+    const { signIn, setLoading, handleGoogleSignIn } = useContext(AuthContext);
     const navigate = useNavigate();
     const location = useLocation();
 
     const from = location.state?.from?.pathname || '/';
+
+
+
+    const handleGoogle = () => {
+        handleGoogleSignIn()
+            .then((result) => {
+
+
+                const user = result.user;
+            }).catch((error) => {
+                console.log("error : ", error);
+            })
+    }
+
 
     const handleSubmit = event => {
         event.preventDefault();
@@ -40,7 +54,7 @@ const Login = () => {
     }
 
     return (
-        <Form onSubmit={handleSubmit} className="m-5 p-5 w-50 ">
+        <><Form onSubmit={handleSubmit} className="m-5 p-5 w-50 ">
             <Form.Group className="mb-3" controlId="formBasicEmail">
                 <Form.Label>Email address</Form.Label>
                 <Form.Control name="email" type="email" placeholder="Enter email" required />
@@ -66,6 +80,16 @@ const Login = () => {
             </div>
 
         </Form>
+
+            <div className="d-grid gap-2 w-50 mx-5 px-5">
+                <Button variant="danger" onClick={handleGoogle}>
+                    <img src='https://play-lh.googleusercontent.com/6UgEjh8Xuts4nwdWzTnWH8QtLuHqRMUB7dp24JYVE2xcYzq4HA8hFfcAbU-R-PC_9uA1' style={{ height: "50px", borderRadius: "50%", marginRight: "5px" }} alt=''></img> Sign in with Google
+                </Button>
+                <Button variant="primary" >
+                    <img src='https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png' style={{ height: "50px", borderRadius: "50%", marginRight: "5px" }} alt=''></img> Sign in with Github
+                </Button>
+            </div></>
+
     );
 };
 

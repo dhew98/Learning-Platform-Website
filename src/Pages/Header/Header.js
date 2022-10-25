@@ -42,7 +42,7 @@ const Header = () => {
                                         </>
                                         :
                                         <>
-                                            <Link to='/login'><Nav.Link href="#pricing"><Button variant="dark">Log In</Button> </Nav.Link></Link>
+                                            <Link to='/login'><Nav.Link href="#pricing"><Button variant="primary" className="fw-bold"  >Log In</Button> </Nav.Link></Link>
                                             <Nav.Link href="#pricing"><FontAwesomeIcon icon={faUser} /> User</Nav.Link>
                                         </>
                                 }
