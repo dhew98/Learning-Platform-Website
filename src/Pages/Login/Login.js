@@ -3,6 +3,11 @@ import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import { useLocation, useNavigate, Link } from 'react-router-dom';
 import { AuthContext } from '../../contexts/AuthProvider/AuthProvider';
+import { GoogleAuthProvider, GithubAuthProvider } from 'firebase/auth'
+import Container from 'react-bootstrap/Container';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
+
 
 
 const Login = () => {
@@ -10,13 +15,15 @@ const Login = () => {
     const { signIn, setLoading, handleGoogleSignIn, handleGithubSignIn } = useContext(AuthContext);
     const navigate = useNavigate();
     const location = useLocation();
+    const Googleprovider = new GoogleAuthProvider();
+    const Githubprovider = new GithubAuthProvider();
 
     const from = location.state?.from?.pathname || '/';
 
 
 
     const handleGoogle = () => {
-        handleGoogleSignIn()
+        handleGoogleSignIn(Googleprovider)
             .then((result) => {
 
 
@@ -26,7 +33,7 @@ const Login = () => {
             })
     }
     const handleGithub = () => {
-        handleGithubSignIn().
+        handleGithubSignIn(Githubprovider).
             then((result) => {
 
 
@@ -64,41 +71,48 @@ const Login = () => {
     }
 
     return (
-        <><Form onSubmit={handleSubmit} className="m-5 p-5 w-50 ">
-            <Form.Group className="mb-3" controlId="formBasicEmail">
-                <Form.Label>Email address</Form.Label>
-                <Form.Control name="email" type="email" placeholder="Enter email" required />
+        <Container className="mt-5 p-5">
+            <Row>
+                <Col md={{ span: 6, offset: 3 }}>
+                    <><Form onSubmit={handleSubmit} className=" w-75 ">
+                        <Form.Group className="mb-3" controlId="formBasicEmail">
+                            <Form.Label>Email address</Form.Label>
+                            <Form.Control name="email" type="email" placeholder="Enter email" required />
 
-            </Form.Group>
+                        </Form.Group>
 
-            <Form.Group className="mb-3" controlId="formBasicPassword">
-                <Form.Label>Password</Form.Label>
-                <Form.Control name="password" type="password" placeholder="Password" required />
-            </Form.Group>
+                        <Form.Group className="mb-3" controlId="formBasicPassword">
+                            <Form.Label>Password</Form.Label>
+                            <Form.Control name="password" type="password" placeholder="Password" required />
+                        </Form.Group>
 
-            <Button className='mx-3' variant="primary" type="submit">
-                Login
-            </Button>
-            OR
-            <Form.Text className="mx-3" >
-                <Link to='/register'>Create a new account</Link>
-            </Form.Text>
-            <div>
-                <Form.Text className="text-danger">
-                    {error}
-                </Form.Text>
-            </div>
+                        <Button className='mx-3' variant="primary" type="submit">
+                            Login
+                        </Button>
+                        OR
+                        <Form.Text className="mx-3" >
+                            <Link to='/register'>Create a new account</Link>
+                        </Form.Text>
+                        <div>
+                            <Form.Text className="text-danger">
+                                {error}
+                            </Form.Text>
+                        </div>
 
-        </Form>
+                    </Form>
 
-            <div className="d-grid gap-2 w-50 mx-5 px-5">
-                <Button variant="danger" onClick={handleGoogle}>
-                    <img src='https://play-lh.googleusercontent.com/6UgEjh8Xuts4nwdWzTnWH8QtLuHqRMUB7dp24JYVE2xcYzq4HA8hFfcAbU-R-PC_9uA1' style={{ height: "50px", borderRadius: "50%", marginRight: "5px" }} alt=''></img> Sign in with Google
-                </Button>
-                <Button variant="secondary" onClick={handleGithub}>
-                    <img src='https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png' style={{ height: "50px", borderRadius: "50%", marginRight: "5px" }} alt=''></img> Sign in with Github
-                </Button>
-            </div></>
+                        <div className="d-grid gap-2 w-75 mt-3 ">
+                            <Button variant="danger" onClick={handleGoogle}>
+                                <img src='https://play-lh.googleusercontent.com/6UgEjh8Xuts4nwdWzTnWH8QtLuHqRMUB7dp24JYVE2xcYzq4HA8hFfcAbU-R-PC_9uA1' style={{ height: "50px", borderRadius: "50%", marginRight: "5px" }} alt=''></img> Sign in with Google
+                            </Button>
+                            <Button variant="secondary" onClick={handleGithub}>
+                                <img src='https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png' style={{ height: "50px", borderRadius: "50%", marginRight: "5px" }} alt=''></img> Sign in with Github
+                            </Button>
+                        </div></>
+
+                </Col>
+            </Row>
+        </Container>
 
     );
 };

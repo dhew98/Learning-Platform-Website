@@ -59,7 +59,7 @@ const Register = () => {
     }
 
     return (
-        <Container>
+        <Container className="mt-5 p-5">
             <Row>
                 <Col md={{ span: 6, offset: 3 }}>
                     <Form onSubmit={handleSubmit}  >
@@ -102,3 +102,6 @@ const Register = () => {
 };
 
 export default Register;
+
+
+
