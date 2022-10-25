@@ -7,7 +7,7 @@ import { AuthContext } from '../../contexts/AuthProvider/AuthProvider';
 
 const Login = () => {
     const [error, setError] = useState('');
-    const { signIn, setLoading, handleGoogleSignIn } = useContext(AuthContext);
+    const { signIn, setLoading, handleGoogleSignIn, handleGithubSignIn } = useContext(AuthContext);
     const navigate = useNavigate();
     const location = useLocation();
 
@@ -18,6 +18,16 @@ const Login = () => {
     const handleGoogle = () => {
         handleGoogleSignIn()
             .then((result) => {
+
+
+                const user = result.user;
+            }).catch((error) => {
+                console.log("error : ", error);
+            })
+    }
+    const handleGithub = () => {
+        handleGithubSignIn().
+            then((result) => {
 
 
                 const user = result.user;
@@ -85,7 +95,7 @@ const Login = () => {
                 <Button variant="danger" onClick={handleGoogle}>
                     <img src='https://play-lh.googleusercontent.com/6UgEjh8Xuts4nwdWzTnWH8QtLuHqRMUB7dp24JYVE2xcYzq4HA8hFfcAbU-R-PC_9uA1' style={{ height: "50px", borderRadius: "50%", marginRight: "5px" }} alt=''></img> Sign in with Google
                 </Button>
-                <Button variant="primary" >
+                <Button variant="secondary" onClick={handleGithub}>
                     <img src='https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png' style={{ height: "50px", borderRadius: "50%", marginRight: "5px" }} alt=''></img> Sign in with Github
                 </Button>
             </div></>
