@@ -4,13 +4,18 @@ import Form from 'react-bootstrap/Form';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-import { Link } from 'react-router-dom';
 import { AuthContext } from '../../contexts/AuthProvider/AuthProvider';
+import { useNavigate, useLocation, Link } from 'react-router-dom';
+
 
 const Register = () => {
     const [error, setError] = useState('');
     const [accepted, setAccepted] = useState(false);
     const { createUser, updateUserProfile, verifyEmail } = useContext(AuthContext);
+    const navigate = useNavigate();
+    const location = useLocation();
+
+    const from = location.state?.from?.pathname || '/';
 
     const handleSubmit = event => {
         event.preventDefault();
@@ -29,6 +34,8 @@ const Register = () => {
                 form.reset();
                 handleUpdateUserProfile(name, photoURL);
                 handleEmailVerification();
+                alert("Check your Email!");
+                navigate(from, { replace: true });
 
             })
             .catch(e => {
@@ -60,8 +67,10 @@ const Register = () => {
 
     return (
         <Container className="mt-5 p-5">
+
             <Row>
                 <Col md={{ span: 6, offset: 3 }}>
+                    <h1 className='fw-bold text-center'>SIGNUP</h1>
                     <Form onSubmit={handleSubmit}  >
                         <Form.Group className="mb-3" controlId="formBasicEmail">
                             <Form.Label>Your Full Name</Form.Label>

@@ -11,7 +11,7 @@ const Coursecard = ({ course }) => {
     const { title, detail, price, star, img, id } = course;
 
     const handleCourse = () => {
-        return <CourseDetails></CourseDetails>
+        return <CourseDetails ></CourseDetails>
     }
 
     return (

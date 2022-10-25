@@ -77,7 +77,7 @@ const AuthProvider = ({ children }) => {
         createUser,
         signIn,
         handleGoogleSignIn,
-        handleGithubSignIn
+        handleGithubSignIn,
     };
 
     return (
