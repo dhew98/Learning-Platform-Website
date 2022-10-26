@@ -15,7 +15,7 @@ const Home = () => {
         <div >
             <Container>
                 <Row>
-                    <Col xs={4} className="mt-5 p-3" >
+                    <Col xs={12} md={4} className="mt-5 p-3" >
                         <h1>All Courses</h1>
                         <div>
                             {
@@ -25,7 +25,7 @@ const Home = () => {
                             }
                         </div>
                     </Col>
-                    <Col xs={8}><CardGroup className='mt-5'>
+                    <Col xs={12} md={8}><CardGroup className='mt-5'>
 
                         {courses.map(course => {
                             return <Coursecard key={course.id} course={course}></Coursecard>;

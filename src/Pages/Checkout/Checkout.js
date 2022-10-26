@@ -15,7 +15,7 @@ const Checkout = () => {
         <div>
             <Container className='mt-5'>
                 <Row>
-                    <Col sm={8}>
+                    <Col xs={12} md={8}>
                         <h1>Your Cart</h1>
 
                         <Container className='mt-5'>
@@ -37,7 +37,7 @@ const Checkout = () => {
                             </Row>
                         </Container>
                     </Col>
-                    <Col sm={4}>
+                    <Col xs={6} md={4}>
                         <h1>Summary</h1>
 
                         <div className='mt-5'>

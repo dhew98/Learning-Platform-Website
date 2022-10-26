@@ -62,7 +62,7 @@ const Header = () => {
                                 user?.uid ?
                                     <>
 
-                                        <Nav.Link className='text-primary'>{user?.displayName}</Nav.Link>
+
                                         <Nav.Link onClick={handleLogOut}> <Button variant="danger">Log out</Button>  </Nav.Link>
 
                                     </>
@@ -73,11 +73,13 @@ const Header = () => {
                                     </>
                             }
                             {user?.photoURL ?
-                                <Image
+                                <><Image
                                     roundedCircle
                                     style={{ height: '50px' }}
-                                    src={user?.photoURL}>
+                                    src={user?.photoURL} data-tip data-for='userName' referrerPolicy="no-referrer" >
+
                                 </Image>
+                                    <ReactTooltip id='userName'>{user?.displayName}</ReactTooltip></>
                                 : <FontAwesomeIcon icon={faUser} />
                             }
 
