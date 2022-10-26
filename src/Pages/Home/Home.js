@@ -26,6 +26,7 @@ const Home = () => {
                         </div>
                     </Col>
                     <Col xs={8}><CardGroup className='mt-5'>
+
                         {courses.map(course => {
                             return <Coursecard key={course.id} course={course}></Coursecard>;
                         })}

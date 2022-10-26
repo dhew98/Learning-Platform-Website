@@ -8,6 +8,7 @@ import { faUser, faGraduationCap } from '@fortawesome/free-solid-svg-icons';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../contexts/AuthProvider/AuthProvider';
 import { Image } from 'react-bootstrap';
+import ReactTooltip from 'react-tooltip';
 
 
 const Header = () => {
@@ -50,12 +51,19 @@ const Header = () => {
                             <Nav.Link ><Link style={{ textDecoration: "None", color: "black" }} to='/'>Courses</Link></Nav.Link>
                             <Nav.Link><Link style={{ textDecoration: "None", color: "black" }} to='/blog'>Blog </Link></Nav.Link>
                             <Nav.Link><Link style={{ textDecoration: "None", color: "black" }} to='/faq'>FAQ </Link></Nav.Link>
+
+
+
+
+
+
+
                             {
                                 user?.uid ?
                                     <>
 
                                         <Nav.Link className='text-primary'>{user?.displayName}</Nav.Link>
-                                        <Nav.Link onClick={handleLogOut}> <Button variant="dark">Log out</Button>  </Nav.Link>
+                                        <Nav.Link onClick={handleLogOut}> <Button variant="danger">Log out</Button>  </Nav.Link>
 
                                     </>
                                     :
@@ -64,9 +72,6 @@ const Header = () => {
 
                                     </>
                             }
-
-
-
                             {user?.photoURL ?
                                 <Image
                                     roundedCircle
@@ -75,6 +80,9 @@ const Header = () => {
                                 </Image>
                                 : <FontAwesomeIcon icon={faUser} />
                             }
+
+
+
 
                         </Nav>
                         <div className="d-flex">
