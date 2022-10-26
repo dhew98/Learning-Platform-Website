@@ -10,13 +10,14 @@ const AuthProvider = ({ children }) => {
     const [loading, setLoading] = useState(true);
 
 
-    const handleGoogleSignIn = (provider) => {
-        return signInWithPopup(auth, provider);
+
+    const handleGoogleSignIn = (Googleprovider) => {
+        return signInWithPopup(auth, Googleprovider);
 
     }
 
-    const handleGithubSignIn = (provider) => {
-        return signInWithPopup(auth, provider);
+    const handleGithubSignIn = (Githubprovider) => {
+        return signInWithPopup(auth, Githubprovider);
 
     }
 
@@ -78,6 +79,7 @@ const AuthProvider = ({ children }) => {
         signIn,
         handleGoogleSignIn,
         handleGithubSignIn,
+
     };
 
     return (

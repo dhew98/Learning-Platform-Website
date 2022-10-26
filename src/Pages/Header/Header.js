@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 import Container from 'react-bootstrap/Container';
 import Button from 'react-bootstrap/Button';
 import Nav from 'react-bootstrap/Nav';
@@ -9,14 +9,30 @@ import { Link } from 'react-router-dom';
 import { AuthContext } from '../../contexts/AuthProvider/AuthProvider';
 import { Image } from 'react-bootstrap';
 
+
 const Header = () => {
     const { user, logOut } = useContext(AuthContext);
+    const [theme, setTheme] = useState('light');
+
+
+    const toggleTheme = () => {
+        if (theme === 'light') {
+            setTheme('dark');
+        } else {
+            setTheme('light');
+        }
+    };
+    useEffect(() => {
+        document.body.className = theme;
+    }, [theme]);
 
     const handleLogOut = () => {
         logOut()
             .then(() => { })
             .catch(error => console.error(error))
     }
+
+
     return (
         <div>
             <Navbar collapseOnSelect expand="lg" bg="light" variant="light">
@@ -29,9 +45,11 @@ const Header = () => {
 
 
                         </Nav>
-                        <Nav className='mx-3 px-5 fs-5 fw-bolder d-flex align-items-center'>
+
+                        <Nav className='mx-3 fs-5 fw-bolder d-flex align-items-center'>
                             <Nav.Link ><Link style={{ textDecoration: "None", color: "black" }} to='/'>Courses</Link></Nav.Link>
                             <Nav.Link><Link style={{ textDecoration: "None", color: "black" }} to='/blog'>Blog </Link></Nav.Link>
+                            <Nav.Link><Link style={{ textDecoration: "None", color: "black" }} to='/faq'>FAQ </Link></Nav.Link>
                             {
                                 user?.uid ?
                                     <>
@@ -58,12 +76,15 @@ const Header = () => {
                                 : <FontAwesomeIcon icon={faUser} />
                             }
 
-
-
-
-
-
                         </Nav>
+                        <div className="d-flex">
+                            Light
+                            <div className="form-check form-switch mx-2">
+
+                                <input onClick={toggleTheme} class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault" />
+                                Dark
+                            </div>
+                        </div>
                     </Navbar.Collapse>
                 </Container>
             </Navbar>
